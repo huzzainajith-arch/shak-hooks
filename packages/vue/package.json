@@ -1,0 +1,33 @@
+{
+  "name": "@shak-hooks/vue",
+  "version": "0.0.1",
+  "description": "Vue composables for Shak Hooks",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src/**/*.ts",
+    "test": "vitest run src --config ../../vitest.config.ts"
+  },
+  "peerDependencies": {
+    "vue": ">=3.0.0"
+  },
+  "dependencies": {
+    "@shak-hooks/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@shak-hooks/config-typescript": "workspace:*",
+    "vue": "^3.3.4",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "@shak-hooks/angular",
+  "version": "0.0.1",
+  "description": "Angular signals/services for Shak Hooks",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint src/**/*.ts",
+    "test": "vitest run --config vitest.config.ts"
+  },
+  "peerDependencies": {
+    "@angular/core": ">=16.0.0",
+    "rxjs": ">=7.0.0"
+  },
+  "dependencies": {
+    "@shak-hooks/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@angular/common": "^16.0.0",
+    "@angular/compiler": "^16.2.12",
+    "@angular/core": "^16.0.0",
+    "@angular/platform-browser": "^16.2.12",
+    "@angular/platform-browser-dynamic": "^16.2.12",
+    "@shak-hooks/config-typescript": "workspace:*",
+    "rxjs": "^7.8.0",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2",
+    "zone.js": "^0.13.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

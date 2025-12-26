@@ -1,0 +1,9 @@
+{
+  "extends": "@shak-hooks/config-typescript/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "jsx": "react-jsx"
+  },
+  "include": ["src"]
+}

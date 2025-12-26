@@ -1,0 +1,37 @@
+import { useState, useLayoutEffect, useRef, MutableRefObject } from "react";
+import { Rect } from "@shak-hooks/core";
+
+export function useMeasure<T extends HTMLElement = HTMLElement>(): [
+  MutableRefObject<T | null>,
+  Rect
+] {
+  const ref = useRef<T | null>(null);
+  const [rect, setRect] = useState<Rect>({
+    width: 0,
+    height: 0,
+    x: 0,
+    y: 0,
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  });
+
+  useLayoutEffect(() => {
+    if (!ref.current) return;
+
+    const observer = new ResizeObserver(([entry]) => {
+      if (entry) {
+        setRect(entry.contentRect);
+      }
+    });
+
+    observer.observe(ref.current);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  return [ref, rect];
+}
