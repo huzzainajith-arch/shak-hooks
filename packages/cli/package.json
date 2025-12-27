@@ -2,6 +2,7 @@
   "name": "@shak-hooks/cli",
   "version": "1.0.0",
   "description": "Shadcn-style CLI to copy Shak Hooks source into your project",
+  "homepage": "https://www.shaktools.com/shak-hooks",
   "private": false,
   "type": "module",
   "bin": {

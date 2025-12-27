@@ -2,6 +2,7 @@
   "name": "@shak-hooks/usehooks",
   "version": "0.0.1",
   "description": "React hooks for Shak Hooks (convenience alias for @shak-hooks/react)",
+  "homepage": "https://www.shaktools.com/shak-hooks",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
