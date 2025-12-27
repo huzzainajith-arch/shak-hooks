@@ -12,7 +12,12 @@ export default function ExamplesPage() {
 
       <div className="space-y-10">
         <section className="border rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-2">useCopyToClipboard</h2>
+          <div className="flex items-baseline justify-between gap-4 mb-2">
+            <h2 className="text-xl font-semibold">useCopyToClipboard</h2>
+            <Link className="text-sm underline text-gray-600" href="/hooks/useCopyToClipboard">
+              Details
+            </Link>
+          </div>
           <p className="text-gray-600 mb-4">Copy API keys, invite codes, share links.</p>
           <pre className="bg-gray-50 border rounded p-4 overflow-auto text-sm">
             <code>{`import { useCopyToClipboard } from "@shak-hooks/usehooks";
@@ -23,7 +28,12 @@ await copyToClipboard("hello");`}</code>
         </section>
 
         <section className="border rounded-lg p-6">
-          <h2 className="text-xl font-semibold mb-2">useDebounce</h2>
+          <div className="flex items-baseline justify-between gap-4 mb-2">
+            <h2 className="text-xl font-semibold">useDebounce</h2>
+            <Link className="text-sm underline text-gray-600" href="/hooks/useDebounce">
+              Details
+            </Link>
+          </div>
           <p className="text-gray-600 mb-4">Debounced search input / autosave.</p>
           <pre className="bg-gray-50 border rounded p-4 overflow-auto text-sm">
             <code>{`import * as React from "react";
@@ -37,15 +47,11 @@ const debounced = useDebounce(q, 300);`}</code>
         <section className="border rounded-lg p-6">
           <h2 className="text-xl font-semibold mb-2">More</h2>
           <p className="text-gray-600">
-            Full examples live in the repo:{" "}
-            <Link className="underline" href="https://github.com/huzzainajith-arch/shak-hooks">
-              GitHub
-            </Link>
-            .
+            Browse all hooks: <Link className="underline" href="/hooks">Hooks</Link>. Full repo examples:{" "}
+            <a className="underline" href="https://github.com/huzzainajith-arch/shak-hooks">GitHub</a>.
           </p>
         </section>
       </div>
     </div>
   );
 }
-

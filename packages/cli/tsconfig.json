@@ -1,0 +1,11 @@
+{
+  "extends": "@shak-hooks/config-typescript/tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "src",
+    "module": "ESNext",
+    "moduleResolution": "Bundler"
+  },
+  "include": ["src"]
+}
+

@@ -1,0 +1,26 @@
+{
+  "name": "@shak-hooks/cli",
+  "version": "0.0.1",
+  "description": "Shadcn-style CLI to copy Shak Hooks source into your project",
+  "private": false,
+  "type": "module",
+  "bin": {
+    "shak-hooks": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "scripts": {
+    "build": "tsup && node ../../scripts/generate-cli-templates.mjs",
+    "dev": "tsup --watch"
+  },
+  "devDependencies": {
+    "@shak-hooks/config-typescript": "workspace:*",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

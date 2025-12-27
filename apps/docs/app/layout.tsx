@@ -22,6 +22,7 @@ export default function RootLayout({
           <div className="container mx-auto flex justify-between items-center">
             <Link href="/" className="text-xl font-bold">Shak Hooks</Link>
             <div className="flex gap-4">
+              <Link href="/install" className="hover:underline">Install</Link>
               <Link href="/hooks" className="hover:underline">Hooks</Link>
               <Link href="/examples" className="hover:underline">Examples</Link>
               <a href="https://github.com/huzzainajith-arch/shak-hooks" className="hover:underline">GitHub</a>

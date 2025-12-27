@@ -17,10 +17,10 @@ export default function Home() {
         </p>
         <div className="mt-6 flex justify-center gap-3">
           <Link
-            href="/hooks"
+            href="/install"
             className="px-4 py-2 rounded bg-black text-white hover:bg-gray-800"
           >
-            Browse hooks
+            Install
           </Link>
           <Link
             href="/examples"
@@ -28,6 +28,30 @@ export default function Home() {
           >
             See examples
           </Link>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-10">
+        <div className="border rounded-lg p-6 shadow-sm">
+          <h2 className="text-xl font-semibold mb-2">Option A: npm</h2>
+          <p className="text-sm text-gray-600 mb-4">
+            Install and import from packages.
+          </p>
+          <pre className="bg-gray-50 border rounded p-4 overflow-auto text-sm">
+            <code>{`npm i @shak-hooks/usehooks
+npm i @shak-hooks/usehooks-vue
+npm i @shak-hooks/usehooks-angular`}</code>
+          </pre>
+        </div>
+        <div className="border rounded-lg p-6 shadow-sm">
+          <h2 className="text-xl font-semibold mb-2">Option B: copy code (CLI)</h2>
+          <p className="text-sm text-gray-600 mb-4">
+            Add hook source to your app and customize it.
+          </p>
+          <pre className="bg-gray-50 border rounded p-4 overflow-auto text-sm">
+            <code>{`pnpm dlx @shak-hooks/cli@latest init
+pnpm dlx @shak-hooks/cli@latest add useCopyToClipboard`}</code>
+          </pre>
         </div>
       </div>
 

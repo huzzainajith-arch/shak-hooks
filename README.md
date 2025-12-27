@@ -8,6 +8,7 @@ See:
 - [HOOKS.md](./HOOKS.md) for the complete hook list.
 - [EXAMPLES.md](./EXAMPLES.md) for practical example use-cases.
 - [USAGE.md](./USAGE.md) for framework usage examples.
+- [CLI.md](./CLI.md) for shadcn-style code copying (customize in your app).
 - [packages/react/README.md](./packages/react/README.md) for React hook docs.
 - [packages/vue/README.md](./packages/vue/README.md) for Vue composable docs.
 - [packages/angular/README.md](./packages/angular/README.md) for Angular Signals docs.
@@ -23,6 +24,7 @@ See:
 | [`@shak-hooks/usehooks`](packages/usehooks) | React convenience alias | [![npm](https://img.shields.io/npm/v/@shak-hooks/usehooks)](https://www.npmjs.com/package/@shak-hooks/usehooks) |
 | [`@shak-hooks/usehooks-vue`](packages/usehooks-vue) | Vue convenience alias | [![npm](https://img.shields.io/npm/v/@shak-hooks/usehooks-vue)](https://www.npmjs.com/package/@shak-hooks/usehooks-vue) |
 | [`@shak-hooks/usehooks-angular`](packages/usehooks-angular) | Angular convenience alias | [![npm](https://img.shields.io/npm/v/@shak-hooks/usehooks-angular)](https://www.npmjs.com/package/@shak-hooks/usehooks-angular) |
+| [`@shak-hooks/cli`](packages/cli) | CLI to copy hook source (shadcn-style) | [![npm](https://img.shields.io/npm/v/@shak-hooks/cli)](https://www.npmjs.com/package/@shak-hooks/cli) |
 
 ## Development
 

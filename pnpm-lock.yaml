@@ -143,6 +143,18 @@ importers:
         specifier: ^0.13.0
         version: 0.13.3
 
+  packages/cli:
+    devDependencies:
+      '@shak-hooks/config-typescript':
+        specifier: workspace:*
+        version: link:../config-typescript
+      tsup:
+        specifier: ^7.2.0
+        version: 7.3.0(typescript@5.9.3)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.9.3
+
   packages/config-typescript: {}
 
   packages/core:

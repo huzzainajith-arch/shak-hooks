@@ -24,7 +24,7 @@ export default function HooksPage() {
       <div className="mb-8">
         <h1 className="text-3xl font-bold">Hooks</h1>
         <p className="text-gray-600 mt-2">
-          Install:{" "}
+          Install (npm):{" "}
           <code className="bg-gray-100 px-2 py-1 rounded">
             npm i @shak-hooks/usehooks
           </code>{" "}
@@ -37,6 +37,18 @@ export default function HooksPage() {
             npm i @shak-hooks/usehooks-angular
           </code>{" "}
           (Angular)
+        </p>
+        <p className="text-gray-600 mt-2">
+          Direct packages (also supported):{" "}
+          <code className="bg-gray-100 px-2 py-1 rounded">npm i @shak-hooks/react</code>{" "}
+          | <code className="bg-gray-100 px-2 py-1 rounded">npm i @shak-hooks/vue</code>{" "}
+          | <code className="bg-gray-100 px-2 py-1 rounded">npm i @shak-hooks/angular</code>
+        </p>
+        <p className="text-gray-600 mt-2">
+          Copy source (CLI):{" "}
+          <code className="bg-gray-100 px-2 py-1 rounded">
+            pnpm dlx @shak-hooks/cli@latest add useCopyToClipboard
+          </code>
         </p>
       </div>
 
@@ -56,7 +68,12 @@ export default function HooksPage() {
         {filtered.map((h) => (
           <div key={h.name} className="border rounded-lg p-5 shadow-sm">
             <div className="flex items-baseline justify-between gap-4">
-              <h2 className="font-mono text-lg font-semibold">{h.name}</h2>
+              <Link
+                href={`/hooks/${h.name}`}
+                className="font-mono text-lg font-semibold underline"
+              >
+                {h.name}
+              </Link>
               <span className="text-xs text-gray-500">React · Vue · Angular</span>
             </div>
             <p className="text-gray-700 mt-2">{h.description}</p>
