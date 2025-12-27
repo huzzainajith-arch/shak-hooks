@@ -1,0 +1,9 @@
+# @shak-hooks/usehooks-vue
+
+## 0.0.2
+
+### Patch Changes
+
+- 071f5e2: Add `homepage` metadata so npm links to https://www.shaktools.com/shak-hooks.
+- Updated dependencies [071f5e2]
+  - @shak-hooks/vue@0.0.2

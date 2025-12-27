@@ -1,6 +1,6 @@
 {
   "name": "@shak-hooks/angular",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Angular signals/services for Shak Hooks",
   "homepage": "https://www.shaktools.com/shak-hooks",
   "main": "./dist/index.js",
@@ -28,7 +28,7 @@
     "rxjs": ">=7.0.0"
   },
   "dependencies": {
-    "@shak-hooks/core": "^0.0.1"
+    "@shak-hooks/core": "^0.0.2"
   },
   "devDependencies": {
     "@angular/common": "^16.0.0",

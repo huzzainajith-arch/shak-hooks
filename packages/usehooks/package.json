@@ -1,6 +1,6 @@
 {
   "name": "@shak-hooks/usehooks",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React hooks for Shak Hooks (convenience alias for @shak-hooks/react)",
   "homepage": "https://www.shaktools.com/shak-hooks",
   "main": "./dist/index.js",
@@ -25,7 +25,7 @@
     "react": ">=16.8.0"
   },
   "dependencies": {
-    "@shak-hooks/react": "^0.0.1"
+    "@shak-hooks/react": "^0.0.2"
   },
   "devDependencies": {
     "@shak-hooks/config-typescript": "workspace:*",

@@ -1,6 +1,6 @@
 {
   "name": "@shak-hooks/vue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Vue composables for Shak Hooks",
   "homepage": "https://www.shaktools.com/shak-hooks",
   "main": "./dist/index.js",
@@ -27,7 +27,7 @@
     "vue": ">=3.0.0"
   },
   "dependencies": {
-    "@shak-hooks/core": "^0.0.1"
+    "@shak-hooks/core": "^0.0.2"
   },
   "devDependencies": {
     "@shak-hooks/config-typescript": "workspace:*",

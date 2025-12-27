@@ -1,6 +1,6 @@
 {
   "name": "@shak-hooks/core",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Framework-agnostic core logic for Shak Hooks",
   "homepage": "https://www.shaktools.com/shak-hooks",
   "main": "./dist/index.js",
