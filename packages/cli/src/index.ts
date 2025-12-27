@@ -210,9 +210,11 @@ function normalizeHookName(h: string): string {
 function updateBarrel({
   outDirAbs,
   hooksAdded,
+  includeCore,
 }: {
   outDirAbs: string;
   hooksAdded: string[];
+  includeCore: boolean;
 }) {
   const indexPath = path.join(outDirAbs, "index.ts");
   const existing = fs.existsSync(indexPath) ? fs.readFileSync(indexPath, "utf8") : "";
@@ -224,7 +226,9 @@ function updateBarrel({
       .filter(Boolean)
   );
 
-  lines.add('export * from "./core";');
+  if (includeCore) {
+    lines.add('export * from "./core";');
+  }
   for (const hook of hooksAdded) {
     lines.add(`export * from "./${hook}";`);
   }
@@ -272,27 +276,39 @@ function runAdd(args: ParsedArgs) {
   const outDirAbs = path.resolve(projectRoot, outDir);
   ensureDir(outDirAbs);
 
-  const coreTemplateDir = path.join(templatesDir, "core");
-  const coreOutDir = path.join(outDirAbs, "core");
-  ensureDir(coreOutDir);
-  for (const file of fs.readdirSync(coreTemplateDir)) {
-    copyFile({
-      from: path.join(coreTemplateDir, file),
-      to: path.join(coreOutDir, file),
-      overwrite,
-    });
+  const hookTemplates = new Map<string, string>();
+  const needsCore = hooksToAdd.some((hook) => {
+    const content = readTemplate(framework, `${hook}.ts`);
+    hookTemplates.set(hook, content);
+    return (
+      /from\s+["']\.\/core(?:\/[^"']+)?["']/.test(content) ||
+      /import\s+["']\.\/core(?:\/[^"']+)?["']/.test(content)
+    );
+  });
+
+  if (needsCore) {
+    const coreTemplateDir = path.join(templatesDir, "core");
+    const coreOutDir = path.join(outDirAbs, "core");
+    ensureDir(coreOutDir);
+    for (const file of fs.readdirSync(coreTemplateDir)) {
+      copyFile({
+        from: path.join(coreTemplateDir, file),
+        to: path.join(coreOutDir, file),
+        overwrite,
+      });
+    }
   }
 
   const hooksAdded: string[] = [];
   for (const hook of hooksToAdd) {
-    const content = readTemplate(framework, `${hook}.ts`);
+    const content = hookTemplates.get(hook) ?? readTemplate(framework, `${hook}.ts`);
     const outPath = path.join(outDirAbs, `${hook}.ts`);
     writeFile({ to: outPath, content, overwrite });
     hooksAdded.push(hook);
   }
 
   if (barrel) {
-    updateBarrel({ outDirAbs, hooksAdded });
+    updateBarrel({ outDirAbs, hooksAdded, includeCore: needsCore });
   }
 
   console.log(`Added ${hooksAdded.length} hook(s) to ${path.relative(projectRoot, outDirAbs)}`);

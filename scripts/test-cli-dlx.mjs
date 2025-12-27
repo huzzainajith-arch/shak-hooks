@@ -3,6 +3,7 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { pathToFileURL } from "node:url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -27,6 +28,7 @@ function writeJsonNoBom(filePath, obj) {
 }
 
 const cliPkgPath = path.join(repoRoot, "packages", "cli");
+const cliPkgUrl = pathToFileURL(cliPkgPath).href;
 const hooksMetaPath = path.join(cliPkgPath, "templates", "hooks.json");
 assert(fs.existsSync(hooksMetaPath), "Missing CLI templates. Run: pnpm -C packages/cli build");
 const hookNames = JSON.parse(fs.readFileSync(hooksMetaPath, "utf8")).hooks;
@@ -52,10 +54,13 @@ for (const entry of matrix) {
     dependencies: entry.deps,
   });
 
-  const dlxBase = ["dlx", "--package", `file:${cliPkgPath}`, "shak-hooks"];
+  const dlxBase = ["dlx", "--package", cliPkgUrl, "shak-hooks"];
 
   const initRes = run("pnpm", [...dlxBase, "init"], appDir);
-  assert(initRes.status === 0, `init failed for ${entry.name}\n${initRes.stderr}\n${initRes.stdout}`);
+  assert(
+    initRes.status === 0,
+    `init failed for ${entry.name}\n${initRes.error?.message ?? ""}\n${initRes.stderr ?? ""}\n${initRes.stdout ?? ""}`
+  );
 
   const configPath = path.join(appDir, "shak-hooks.json");
   assert(fs.existsSync(configPath), `init did not create shak-hooks.json for ${entry.name}`);
@@ -68,14 +73,16 @@ for (const entry of matrix) {
 
   const outDirAbs = path.join(appDir, entry.expectedOutDir);
   assert(fs.existsSync(outDirAbs), `missing outDir ${entry.expectedOutDir} for ${entry.name}`);
-  assert(fs.existsSync(path.join(outDirAbs, "core", "index.ts")), `missing core/index.ts for ${entry.name}`);
   assert(fs.existsSync(path.join(outDirAbs, "useBattery.ts")), `missing useBattery.ts for ${entry.name}`);
+  assert(!fs.existsSync(path.join(outDirAbs, "core")), `core/ should not be created for useBattery (${entry.name})`);
 
   const addAllRes = run("pnpm", [...dlxBase, "add", "all", "--yes"], appDir);
   assert(
     addAllRes.status === 0,
     `add all failed for ${entry.name}\n${addAllRes.stderr}\n${addAllRes.stdout}`
   );
+
+  assert(fs.existsSync(path.join(outDirAbs, "core", "index.ts")), `missing core/index.ts after add all for ${entry.name}`);
 
   const files = fs.readdirSync(outDirAbs).filter((f) => f.endsWith(".ts"));
   assert(files.includes("index.ts"), `missing barrel index.ts for ${entry.name}`);

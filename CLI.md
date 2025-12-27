@@ -18,7 +18,7 @@ pnpm dlx @shak-hooks/cli@latest add useCopyToClipboard
 
 Generated structure:
 
-- `core/` (shared utilities)
+- `core/` (shared utilities; only copied when the selected hook needs it)
 - `useXxx.ts` (the hook implementation)
 - `index.ts` (barrel export, if enabled)
 
@@ -73,4 +73,3 @@ If you keep the barrel file (`index.ts`), you can import from:
 ```ts
 import { useCopyToClipboard } from "./shak-hooks";
 ```
-
