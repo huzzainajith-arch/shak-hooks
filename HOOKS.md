@@ -12,6 +12,7 @@ This library provides a collection of utility hooks for Angular, React, and Vue.
 - React: `packages/react/README.md`
 - Vue: `packages/vue/README.md`
 - Angular: `packages/angular/README.md`
+- More examples: `USAGE.md`, `EXAMPLES.md`
 
 ## Installation
 
@@ -29,55 +30,58 @@ npm install @shak-hooks/usehooks-angular
 
 ## Available Hooks
 
-| Hook | Description |
-|------|-------------|
-| `useBattery` | Tracks device battery state. |
-| `useClickAway` | Triggers a callback when clicking outside a target element. |
-| `useContinuousRetry` | Continuously retries a callback until it returns true or max retries reached. |
-| `useCopyToClipboard` | Copies text to the clipboard. |
-| `useCountdown` | Manages a countdown timer. |
-| `useCounter` | Manages a counter with min/max limits. |
-| `useDebounce` | Debounces a value. |
-| `useDefault` | Returns a default value if the state is null or undefined. |
-| `useDocumentTitle` | Manages the document title. |
-| `useEventListener` | Manages event listeners. |
-| `useFavicon` | Manages the document favicon. |
-| `useFetch` | reactive fetch client. |
-| `useGeolocation` | Tracks user geolocation. |
-| `useHistoryState` | Manages history state. |
-| `useHover` | Tracks if an element is being hovered. |
-| `useIdle` | Tracks user idle state. |
-| `useIntersectionObserver` | Tracks element intersection. |
-| `useInterval` | Manages intervals. |
-| `useIntervalWhen` | Manages intervals with a condition. |
-| `useIsClient` | Checks if code is running on the client. |
-| `useKeyPress` | Tracks key press events. |
-| `useList` | Manages a list state. |
-| `useLocalStorage` | Manages localStorage. |
-| `useLockBodyScroll` | Locks body scroll. |
-| `useLogger` | Logger utility. |
-| `useLongPress` | Tracks long press events. |
-| `useMap` | Manages a Map state. |
-| `useMeasure` | Measures element size and position. |
-| `useMediaQuery` | Tracks media queries. |
-| `useMouse` | Tracks mouse position. |
-| `useNetworkState` | Tracks network connection state. |
-| `useObjectState` | Manages an object state. |
-| `useOrientation` | Tracks device orientation. |
-| `usePageLeave` | Triggers when the mouse leaves the page. |
-| `usePreferredLanguage` | Tracks preferred language. |
-| `usePrevious` | Tracks the previous value of a state. |
-| `useQueue` | Manages a queue. |
-| `useRandomInterval` | Runs a callback at random intervals. |
-| `useScript` | Loads external scripts. |
-| `useSessionStorage` | Manages sessionStorage. |
-| `useSet` | Manages a Set state. |
-| `useThrottle` | Throttles a value. |
-| `useTimeout` | Manages timeouts. |
-| `useToggle` | Manages a boolean toggle state. |
-| `useVisibilityChange` | Tracks document visibility. |
-| `useWindowScroll` | Tracks window scroll position. |
-| `useWindowSize` | Tracks window size. |
+| Hook | Description | Common use cases |
+|------|-------------|------------------|
+| `useBattery` | Tracks device battery state. | Power-saving UI, battery indicator |
+| `useClickAway` | Triggers a callback when clicking outside a target element. | Close dropdowns, modals, popovers |
+| `useContinuousRetry` | Retries a callback until it returns true (or max retries). | Poll "ready" flags, retry flaky APIs |
+| `useCopyToClipboard` | Copies text to the clipboard. | Copy API keys, share links, invite codes |
+| `useCountdown` | Manages a countdown timer. | OTP resend timer, quiz timer, redirects |
+| `useCounter` | Counter state with helpers. | Quantity picker, pagination, stepper |
+| `useDebounce` | Debounces a value/signal/ref. | Search input, autosave, expensive filters |
+| `useDefault` | Applies a default when value is null/undefined. | Form defaults, optional config fallbacks |
+| `useDocumentTitle` | Manages the document title. | Page titles, unread counts |
+| `useEventListener` | Manages event listeners. | Keyboard shortcuts, scroll/resize listeners |
+| `useFavicon` | Manages the document favicon. | Unread badge icon, status indicator |
+| `useFetch` | Reactive fetch client. | Data fetching, loading/error state |
+| `useGeolocation` | Tracks user geolocation. | Location-based content, maps |
+| `useHistoryState` | Manages history state. | Persist UI state across back/forward |
+| `useHover` | Tracks hover state for an element. | Tooltips, hover cards, prefetching |
+| `useIdle` | Tracks user idle state. | Auto logout, pause polling, idle UI |
+| `useIntersectionObserver` | Tracks element intersection. | Infinite scroll, lazy loading, reveal animations |
+| `useInterval` | Runs a callback on an interval. | Polling, clocks, recurring updates |
+| `useIntervalWhen` | Runs an interval gated by a condition. | Only poll when visible/online |
+| `useIsClient` | Checks if code is running on the client. | Avoid SSR mismatch, client-only UI |
+| `useIsFirstRender` | Indicates the first render. | Skip effects on first render |
+| `useKeyPress` | Tracks key press events. | Shortcuts, games, input UX |
+| `useList` | List state with helper actions. | Dynamic forms, todo lists |
+| `useLocalStorage` | LocalStorage-backed state. | Persist theme, preferences |
+| `useLockBodyScroll` | Locks body scroll. | Modal/drawer open behavior |
+| `useLogger` | Logging helper. | Debug renders/lifecycle |
+| `useLongPress` | Long-press detection. | Mobile context menu, press-and-hold |
+| `useMap` | `Map` state with helper actions. | Caches, keyed collections |
+| `useMeasure` | Measures element size and position. | Layout measurement, tooltip placement |
+| `useMediaQuery` | Tracks media queries. | Responsive UI, prefers-color-scheme |
+| `useMouse` | Tracks mouse position. | Cursor effects, hover-follow tooltips |
+| `useNetworkState` | Tracks network connection state. | Offline banner, disable actions |
+| `useObjectState` | Object state with merge update. | Form objects, partial updates |
+| `useOrientation` | Tracks device orientation. | Rotate UI, orientation-specific layouts |
+| `usePageLeave` | Triggers when the mouse leaves the page. | Exit-intent prompts, analytics |
+| `usePreferredLanguage` | Tracks preferred language. | i18n default, locale selection |
+| `usePrevious` | Tracks the previous value. | Compare changes, animations |
+| `useQueue` | Queue state with helper actions. | Toast queue, jobs, uploads |
+| `useRandomInterval` | Runs a callback at random intervals. | Jittered polling, randomized timers |
+| `useRenderCount` | Counts component renders. | Debug performance, render tracking |
+| `useRenderInfo` | Logs render timing/info. | Debug rendering, perf insights |
+| `useScript` | Loads external scripts. | Google Maps SDK, analytics scripts |
+| `useSessionStorage` | SessionStorage-backed state. | Wizard steps, temporary drafts |
+| `useSet` | `Set` state with helper actions. | Multi-select, toggled item sets |
+| `useThrottle` | Throttles a value. | Scroll handlers, resize events |
+| `useTimeout` | Runs a callback after delay. | Delayed tooltips, delayed actions |
+| `useToggle` | Boolean toggle state. | Modals, flags, on/off state |
+| `useVisibilityChange` | Tracks document visibility. | Pause polling when hidden |
+| `useWindowScroll` | Tracks window scroll position. | Scroll progress, sticky UI |
+| `useWindowSize` | Tracks window size. | Responsive layout, canvas sizing |
 
 ## Detailed API Reference
 

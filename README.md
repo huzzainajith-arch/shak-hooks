@@ -6,6 +6,8 @@ A collection of utility hooks for Angular, React, and Vue.
 
 See:
 - [HOOKS.md](./HOOKS.md) for the complete hook list.
+- [EXAMPLES.md](./EXAMPLES.md) for practical example use-cases.
+- [USAGE.md](./USAGE.md) for framework usage examples.
 - [packages/react/README.md](./packages/react/README.md) for React hook docs.
 - [packages/vue/README.md](./packages/vue/README.md) for Vue composable docs.
 - [packages/angular/README.md](./packages/angular/README.md) for Angular Signals docs.
@@ -23,6 +25,12 @@ See:
 | [`@shak-hooks/usehooks-angular`](packages/usehooks-angular) | Angular convenience alias | [![npm](https://img.shields.io/npm/v/@shak-hooks/usehooks-angular)](https://www.npmjs.com/package/@shak-hooks/usehooks-angular) |
 
 ## Development
+
+### Docs site
+
+```bash
+pnpm -C apps/docs dev
+```
 
 ### Adding a new hook
 

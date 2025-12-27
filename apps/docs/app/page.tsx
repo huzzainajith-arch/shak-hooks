@@ -2,6 +2,7 @@
 
 import { useCounter } from "@shak-hooks/react";
 import { useMeasure } from "@shak-hooks/react";
+import Link from "next/link";
 
 export default function Home() {
   const [count, { inc, dec, reset }] = useCounter(0, { min: 0, max: 10 });
@@ -14,6 +15,20 @@ export default function Home() {
         <p className="text-xl text-gray-600">
           One hook library for React, Vue, and Angular.
         </p>
+        <div className="mt-6 flex justify-center gap-3">
+          <Link
+            href="/hooks"
+            className="px-4 py-2 rounded bg-black text-white hover:bg-gray-800"
+          >
+            Browse hooks
+          </Link>
+          <Link
+            href="/examples"
+            className="px-4 py-2 rounded border hover:bg-gray-50"
+          >
+            See examples
+          </Link>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
