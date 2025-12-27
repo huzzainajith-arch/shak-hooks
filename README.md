@@ -18,6 +18,9 @@ See:
 | [`@shak-hooks/react`](packages/react) | React Hooks | [![npm](https://img.shields.io/npm/v/@shak-hooks/react)](https://www.npmjs.com/package/@shak-hooks/react) |
 | [`@shak-hooks/vue`](packages/vue) | Vue Composables | [![npm](https://img.shields.io/npm/v/@shak-hooks/vue)](https://www.npmjs.com/package/@shak-hooks/vue) |
 | [`@shak-hooks/angular`](packages/angular) | Angular Signals | [![npm](https://img.shields.io/npm/v/@shak-hooks/angular)](https://www.npmjs.com/package/@shak-hooks/angular) |
+| [`@shak-hooks/usehooks`](packages/usehooks) | React convenience alias | [![npm](https://img.shields.io/npm/v/@shak-hooks/usehooks)](https://www.npmjs.com/package/@shak-hooks/usehooks) |
+| [`@shak-hooks/usehooks-vue`](packages/usehooks-vue) | Vue convenience alias | [![npm](https://img.shields.io/npm/v/@shak-hooks/usehooks-vue)](https://www.npmjs.com/package/@shak-hooks/usehooks-vue) |
+| [`@shak-hooks/usehooks-angular`](packages/usehooks-angular) | Angular convenience alias | [![npm](https://img.shields.io/npm/v/@shak-hooks/usehooks-angular)](https://www.npmjs.com/package/@shak-hooks/usehooks-angular) |
 
 ## Development
 

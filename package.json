@@ -8,7 +8,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "changeset": "changeset",
     "version": "changeset version",
-    "release": "changeset publish",
+    "release": "turbo run build --filter=@shak-hooks/* && changeset publish",
     "test": "vitest run",
     "test:angular": "vitest run --config packages/angular/vitest.config.ts",
     "test:react": "vitest run packages/react/src",

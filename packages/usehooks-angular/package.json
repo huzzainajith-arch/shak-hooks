@@ -1,7 +1,7 @@
 {
-  "name": "@shak-hooks/core",
+  "name": "@shak-hooks/usehooks-angular",
   "version": "0.0.1",
-  "description": "Framework-agnostic core logic for Shak Hooks",
+  "description": "Angular signals utilities for Shak Hooks (convenience alias for @shak-hooks/angular)",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -18,8 +18,14 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
-    "lint": "eslint src/**/*.ts"
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "@angular/core": ">=16.0.0",
+    "rxjs": ">=7.0.0"
+  },
+  "dependencies": {
+    "@shak-hooks/angular": "^0.0.1"
   },
   "devDependencies": {
     "@shak-hooks/config-typescript": "workspace:*",

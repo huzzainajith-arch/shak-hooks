@@ -1,7 +1,7 @@
 {
-  "name": "@shak-hooks/core",
+  "name": "@shak-hooks/usehooks",
   "version": "0.0.1",
-  "description": "Framework-agnostic core logic for Shak Hooks",
+  "description": "React hooks for Shak Hooks (convenience alias for @shak-hooks/react)",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -18,8 +18,13 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
-    "lint": "eslint src/**/*.ts"
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0"
+  },
+  "dependencies": {
+    "@shak-hooks/react": "^0.0.1"
   },
   "devDependencies": {
     "@shak-hooks/config-typescript": "workspace:*",

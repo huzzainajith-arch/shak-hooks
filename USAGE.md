@@ -6,23 +6,30 @@ Here is how to use **Shak Hooks** across different frameworks.
 
 **Install:**
 ```bash
-npm i @shak-hooks/react
+npm i @shak-hooks/usehooks
 ```
 
 **Usage:**
 ```tsx
 import * as React from "react";
-import { useMeasure } from "@shak-hooks/react";
+import { useCopyToClipboard } from "@shak-hooks/usehooks";
 
 export default function App() {
-  const [ref, rect] = useMeasure();
+  const randomHash = crypto.randomUUID();
+  const [copiedText, copyToClipboard] = useCopyToClipboard();
+  const hasCopiedText = Boolean(copiedText);
 
   return (
     <section>
-      <h1>useMeasure</h1>
-      <article ref={ref} style={{ resize: "both", overflow: "auto", border: "1px solid #ccc", padding: "20px" }}>
-        <p>Width: {Math.floor(rect.width)}</p>
-        <p>Height: {Math.floor(rect.height)}</p>
+      <h1>useCopyToClipboard</h1>
+      <article>
+        <label>Fake API Key</label>
+        <pre>
+          <code>{randomHash}</code>
+          <button disabled={hasCopiedText} className="link" onClick={() => copyToClipboard(randomHash)}>
+            {hasCopiedText ? "Copied" : "Copy"}
+          </button>
+        </pre>
       </article>
     </section>
   );
@@ -33,24 +40,27 @@ export default function App() {
 
 **Install:**
 ```bash
-npm i @shak-hooks/vue
+npm i @shak-hooks/usehooks-vue
 ```
 
 **Usage:**
 ```vue
 <script setup lang="ts">
-import { useMeasure } from "@shak-hooks/vue";
+import { useCopyToClipboard } from "@shak-hooks/usehooks-vue";
 
-const [elementRef, rect] = useMeasure();
+const randomHash = crypto.randomUUID();
+const { value, copy } = useCopyToClipboard();
 </script>
 
 <template>
   <section>
-    <h1>useMeasure</h1>
-    <article ref="elementRef" style="resize: both; overflow: auto; border: 1px solid #ccc; padding: 20px;">
-      <p>Width: {{ Math.floor(rect.width) }}</p>
-      <p>Height: {{ Math.floor(rect.height) }}</p>
-    </article>
+    <h1>useCopyToClipboard</h1>
+    <pre>
+      <code>{{ randomHash }}</code>
+      <button :disabled="Boolean(value)" class="link" @click="copy(randomHash)">
+        {{ value ? "Copied" : "Copy" }}
+      </button>
+    </pre>
   </section>
 </template>
 ```
@@ -59,44 +69,36 @@ const [elementRef, rect] = useMeasure();
 
 **Install:**
 ```bash
-npm i @shak-hooks/angular
+npm i @shak-hooks/usehooks-angular
 ```
 
 **Usage:**
 ```typescript
-import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { useMeasure } from '@shak-hooks/angular';
+import { Component, signal } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { useCopyToClipboard } from "@shak-hooks/usehooks-angular";
 
 @Component({
-  selector: 'app-measure',
+  selector: "app-copy-to-clipboard",
   standalone: true,
   imports: [CommonModule],
   template: `
     <section>
-      <h1>useMeasure</h1>
-      <article #target style="resize: both; overflow: auto; border: 1px solid #ccc; padding: 20px;">
-        <p>Width: {{ Math.floor(rect().width) }}</p>
-        <p>Height: {{ Math.floor(rect().height) }}</p>
-      </article>
+      <h1>useCopyToClipboard</h1>
+      <pre>
+        <code>{{ randomHash() }}</code>
+        <button [disabled]="Boolean(value())" class="link" (click)="copy(randomHash())">
+          {{ value() ? "Copied" : "Copy" }}
+        </button>
+      </pre>
     </section>
   `
 })
-export class MeasureComponent implements AfterViewInit {
-  @ViewChild('target') target!: ElementRef;
-  
-  // Initialize hook
-  measureHook = useMeasure();
-  ref = this.measureHook[0];
-  rect = this.measureHook[1];
-  
-  // Helper for template
-  Math = Math;
-
-  ngAfterViewInit() {
-    // Connect the element to the hook
-    this.ref.set(this.target);
-  }
+export class CopyToClipboardComponent {
+  readonly randomHash = signal(crypto.randomUUID());
+  readonly clipboardHook = useCopyToClipboard();
+  readonly value = this.clipboardHook.value;
+  readonly copy = this.clipboardHook.copy;
 }
 ```
 

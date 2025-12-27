@@ -21,6 +21,10 @@ npm install @shak-hooks/angular
 npm install @shak-hooks/react
 # or
 npm install @shak-hooks/vue
+# or (convenience alias names)
+npm install @shak-hooks/usehooks
+npm install @shak-hooks/usehooks-vue
+npm install @shak-hooks/usehooks-angular
 ```
 
 ## Available Hooks

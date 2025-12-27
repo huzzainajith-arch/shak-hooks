@@ -1,7 +1,7 @@
 {
-  "name": "@shak-hooks/core",
+  "name": "@shak-hooks/usehooks-vue",
   "version": "0.0.1",
-  "description": "Framework-agnostic core logic for Shak Hooks",
+  "description": "Vue composables for Shak Hooks (convenience alias for @shak-hooks/vue)",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -18,8 +18,13 @@
   ],
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
-    "lint": "eslint src/**/*.ts"
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "vue": ">=3.0.0"
+  },
+  "dependencies": {
+    "@shak-hooks/vue": "^0.0.1"
   },
   "devDependencies": {
     "@shak-hooks/config-typescript": "workspace:*",
